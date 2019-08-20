@@ -11,12 +11,30 @@
 					location.href = "index.html";
 				}
 			}
+			window.onload = function(){
+				chamarAPI();
+			}
+				
+			function chamarAPI(){
+				const endpoint = "https://api.exchangeratesapi.io/latest";
+				var request = new XMLHttpRequest();
+				request.addEventListener("load", respostaAPI);
+				request.open("GET", endpoint);
+				request.send();
+			}
 			
+			function respostaAPI(){
+				console.log(this);
+			}
 		</script>
 	</head>
 	
 	<body>
-		<h1>O resultado é...</h1>
+		<h1>Resultado</h1>
+		<p>
+			1 EUR é igual a
+			<span id="valor_destino">X</span> <span id="modeda_destino">BRL</span>
+		</p>
 		<button type="button" onclick="voltar()" >
 			Voltar
 		</button>
