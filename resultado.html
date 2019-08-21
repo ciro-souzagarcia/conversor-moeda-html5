@@ -24,7 +24,17 @@
 			}
 			
 			function respostaAPI(){
-				console.log(this);
+				//console.log(this);
+				var oResposta = JSON.parse(this.responseText);
+				var url = new URL(location.href);
+				
+				var sMoedaOrigem = url.searchParams.get("origem");
+				var sMoedaDestino = url.searchParams.get("destino");
+				var fValor = oResposta.rates[sMoedaDestino];
+				
+				document.querySelector("#valor_destino").innerText = fValor;
+				document.querySelector("#moeda_destino").innerText = sMoedaDestino;
+				
 			}
 		</script>
 	</head>
